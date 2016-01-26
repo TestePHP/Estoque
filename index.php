@@ -12,12 +12,16 @@
                 <h3>PHP CRUD Grid</h3>
             </div>
             <div class="row">
+                <p>
+                    <a href="create.php" class="btn btn-success">Create</a>
+                </p>
                 <table class="table table-striped table-bordered">
                   <thead>
                     <tr>
                       <th>Produto</th>
                       <th>Cliente</th>
                       <th>Pedido</th>
+                      <th>Action</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -30,6 +34,7 @@
                             echo '<td>'. $row['produto'] . '</td>';
                             echo '<td>'. $row['cliente'] . '</td>';
                             echo '<td>'. $row['pedido'] . '</td>';
+                            echo '<td><a class="btn" href="read.php?id='.$row['id'].'">Read</a></td>'; 
                             echo '</tr>';
                    }
                    Database::disconnect();
