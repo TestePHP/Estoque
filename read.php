@@ -1,5 +1,5 @@
 <?php
-    require 'conecta.php';
+    require 'conexao.php';
     $id = null;
     if ( !empty($_GET['id'])) {
         $id = $_REQUEST['id'];
