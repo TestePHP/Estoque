@@ -34,7 +34,14 @@
                             echo '<td>'. $row['produto'] . '</td>';
                             echo '<td>'. $row['cliente'] . '</td>';
                             echo '<td>'. $row['pedido'] . '</td>';
-                            echo '<td><a class="btn" href="read.php?id='.$row['id'].'">Read</a></td>'; 
+                             echo '<td width=250>';
+                                echo '<a class="btn" href="read.php?id='.$row['id'].'">Ler</a>';
+                                echo ' ';
+                                echo '<a class="btn btn-success" href="update.php?id='.$row['id'].'">ALterar</a>';
+                                echo ' ';
+                                echo '<a class="btn btn-danger" href="delete.php?id='.$row['id'].'">Excluir</a>';
+                                echo '</td>';
+                           
                             echo '</tr>';
                    }
                    Database::disconnect();
