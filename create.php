@@ -1,5 +1,53 @@
 <!DOCTYPE html>
 <html lang="en">
+    
+    <?php
+
+require 'conecta.php';
+
+if ( !empty($_POST)) {
+
+$produtoError = null;
+$clienteError = null;
+$pedidoError = null;
+
+
+$produto = $_POST['produto'];
+$cliente = $_POST['cliente'];
+$pedido = $_POST['pedido'];
+
+
+$valid = true;
+if (empty($name)) {
+$produtoError = 'Entre um produto';
+$valid = false;
+}
+
+if (empty($cliente)) {
+$clienteError = 'Cliente';
+$valid = false;
+} else if ( !filter_var($cliente,FILTER_VALIDATE_EMAIL) ) {
+$clienteError = 'Cliente nao cadastrado';
+$valid = false;
+}
+
+if (empty($pedido)) {
+$pedidoError = 'Pedido nao cadastrado';
+$valid = false;
+}
+
+// insert data
+if ($valid) {
+$pdo = Database::connect();
+$pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+$sql = "INSERT INTO testephp (produto,cliente,pedido) values(?, ?, ?)";
+$q = $pdo->prepare($sql);
+$q->execute(array($produto,$cliente,$pedido));
+Database::disconnect();
+header("Location: index.php");
+}
+}
+?>
 <head>
     <meta charset="utf-8">
     <link   href="css/bootstrap.min.css" rel="stylesheet">
