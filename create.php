@@ -3,7 +3,7 @@
     
     <?php
 
-require 'conecta.php';
+require 'conexao.php';
 
 if ( !empty($_POST)) {
 
